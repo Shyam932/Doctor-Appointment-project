@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Spinner from "./components/Spinner";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -13,9 +13,9 @@ import Doctors from "./pages/admin/Doctors";
 import Profile from "./pages/doctor/Profile";
 import BookingPage from "./pages/BookingPage";
 import Appointments from "./pages/Appointments";
+import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
-
   return (
     <>
       <BrowserRouter>
@@ -40,7 +40,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/admin/doctors"
               element={
@@ -49,7 +48,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/doctor/profile/:id"
               element={
@@ -58,7 +56,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/doctor/book-appointment/:doctorId"
               element={
@@ -67,7 +64,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/notification"
               element={
@@ -76,7 +72,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
             <Route
               path="/Login"
               element={
@@ -85,7 +80,6 @@ function App() {
                 </PublicRoute>
               }
             />
-
             <Route
               path="/Register"
               element={
@@ -94,7 +88,6 @@ function App() {
                 </PublicRoute>
               }
             />
-
             <Route
               path="/appointments"
               element={
@@ -103,7 +96,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
+            <Route
+              path="/doctor-appointments"
+              element={
+                <ProtectedRoute>
+                  <DoctorAppointments />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/"
               element={

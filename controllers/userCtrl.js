@@ -187,11 +187,10 @@ const bookAppointmentController = async (req, res) => {
     const newAppointment = new appointmentModel(req.body);
     await newAppointment.save();
     const user = await userModel.findOne({ _id: req.body.doctorInfo.userId });
-    //const notification = adminUser.notification;
     user.notification.push({
       type: "New-appointment-request",
       message: `A New Appointment Request From ${req.body.userInfo.name}`,
-      onClickPath: "/user/appointments",
+      onCLickPath: "/user/appointments",
     });
     await user.save();
     res.status(200).send({
