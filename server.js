@@ -17,7 +17,7 @@ const app = express();
 //middleweres
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://clientmp.onrender.com/", credentials: true }));
 
 //routes
 app.use("/api/v1/user", require("./routes/userRoutes"));
