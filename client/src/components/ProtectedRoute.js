@@ -9,6 +9,7 @@ export default function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
+  const apiPath = "http://localhost:5000";
   //get user
   //eslint-disable-next-line
   const getUser = async () => {
@@ -16,7 +17,7 @@ export default function ProtectedRoute({ children }) {
       dispatch(showLoading());
       // debugger;
       const res = await axios.post(
-        "http://localhost:5000/api/v1/user/getUserData",
+        `${apiPath}/api/v1/user/getUserData`,
         { token: localStorage.getItem("token") },
         {
           headers: {
